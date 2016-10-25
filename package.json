@@ -1,0 +1,19 @@
+{
+  "name": "extension",
+  "version": "0.0.1",
+  "description": "A vue project.",
+  "private": false,
+  "keywords": [],
+  "scripts": {
+    "dev": "cooking watch -p",
+    "dist": "cooking build -p",
+    "deploy": "cooking build --no-color"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "airloy": "^0.9.6",
+    "airloy-web": "^0.9.6",
+    "dom-tree": "1.0.0"
+  },
+  "devDependencies": {}
+}

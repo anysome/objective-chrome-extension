@@ -1,0 +1,7 @@
+{
+  "server": "localhost:8080",
+  "useHttps": false,
+  "apiVersion": "v1",
+  "appKey": "Delight",
+  "appSecret": "test"
+}
