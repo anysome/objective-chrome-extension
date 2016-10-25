@@ -36,9 +36,10 @@ async function entry() {
   }
 }
 
-
 dt.add('#footer',
   '<a href="#" class="left"><img src="{leftIcon}"></a><a href="#" class="right"><img src="{rightIcon}"></a>',
   {leftIcon: require('./assets/images/login.png'), rightIcon: require('./assets/images/reload.png')}
 );
+
+entry();
 

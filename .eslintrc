@@ -1,4 +1,8 @@
 {
   "plugins": ["vue"],
-  "extends": ["elemefe"]
+  "extends": ["elemefe"],
+  "parserOptions": {
+    "ecmaVersion": 2017,
+    "sourceType": "module"
+  }
 }
