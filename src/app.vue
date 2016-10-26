@@ -11,8 +11,20 @@
 
   export default {
     name: 'app',
+
+    data() {
+      return {
+        signed: false
+      }
+    },
+
     components: {
       TodoList
+    },
+
+    async created() {
+      this.signed = await this.$airloy.auth.setup();
+      console.log(`signed ? ${this.signed}`);
     }
   };
 </script>

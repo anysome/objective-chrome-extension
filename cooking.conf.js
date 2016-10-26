@@ -9,7 +9,7 @@ cooking.set({
   template: './index.tpl',
 
   devServer: {
-    port: 8080,
+    port: 3000,
     publicPath: '/',
     proxy: {
       '/**/*.json': {

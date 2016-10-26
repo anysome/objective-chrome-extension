@@ -1,6 +1,6 @@
 {
   "airloy": {
-    "server": "localhost:8080",
+    "server": "localhost:3000",
     "useHttps": false,
     "apiVersion": "v1",
     "appKey": "Delight",

@@ -3,8 +3,7 @@
   "version": "0.0.1",
   "description": "Build with vue2 and airloy",
   "private": false,
-  "keywords": [
-  ],
+  "keywords": [],
   "scripts": {
     "dev": "cooking watch -p",
     "dist": "cooking build -p",
@@ -21,8 +20,10 @@
   "author": "Layman <anysome@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "airloy-web": "^0.9.6",
+    "babel-polyfill": "*",
     "vue": "^2.0.1",
-    "babel-polyfill": "*"
+    "vue-airloy": "^0.9.7"
   },
   "devDependencies": {
     "cooking-vue2": "*"
