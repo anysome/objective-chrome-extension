@@ -1,7 +1,9 @@
 {
-  "server": "localhost:8080",
-  "useHttps": false,
-  "apiVersion": "v1",
-  "appKey": "Delight",
-  "appSecret": "test"
+  "airloy": {
+    "server": "localhost:8080",
+    "useHttps": false,
+    "apiVersion": "v1",
+    "appKey": "Delight",
+    "appSecret": "test"
+  }
 }

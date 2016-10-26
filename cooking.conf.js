@@ -6,7 +6,7 @@ cooking.set({
     app: ['babel-polyfill', './src/main.js']
   },
   dist: './dist',
-  template: './index.html',
+  template: './index.tpl',
 
   devServer: {
     port: 8080,
@@ -22,22 +22,21 @@ cooking.set({
 
   // production
   clean: true,
-  hash: false,
+  hash: true,
   sourceMap: false,
   minimize: true,
-  chunk: false, // see https://cookingjs.github.io/zh-cn/configuration.html#chunk
+  chunk: true, // see https://cookingjs.github.io/zh-cn/configuration.html#chunk
   postcss: [
     // require('...')
   ],
   publicPath: '/dist/',
-  assetsPath: 'assets',
+  assetsPath: 'static',
   urlLoaderLimit: 10000,
-  extractCSS: 'popup.css',
+  extractCSS: '[name].[contenthash:7].css',
   alias: {
     'src': path.join(__dirname, 'src')
   },
-  extends: ['lint', 'saladcss'],
-  format: 'umd'
+  extends: ['vue2', 'lint', 'saladcss']
 });
 
 module.exports = cooking.resolve();

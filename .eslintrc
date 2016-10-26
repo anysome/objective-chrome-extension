@@ -4,5 +4,21 @@
   "parserOptions": {
     "ecmaVersion": 2017,
     "sourceType": "module"
+  },
+  // global var
+  "globals": {
+    "window": true,
+    "Headers": true,
+    "fetch": true,
+    "Request": true,
+    "RongIMLib": true,
+    "plupload": true,
+    "Qiniu": true
+  },
+  "rules": {
+//    "arrow-parens": 0, // allow paren-less arrow functions
+//    "space-before-function-paren": 0,
+//    "new-cap": 0,
+    "semi": 0
   }
 }

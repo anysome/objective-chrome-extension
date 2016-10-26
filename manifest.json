@@ -10,7 +10,7 @@
     "persistent": false,
     "scripts": ["background.js"]
   },
-  "permissions": ["http://api.asfun.cn/", "https://*.google.com/"],
+  "permissions": ["http://api.asfun.cn/", "https://*.exease.com/"],
   "browser_action": {
     "default_title": "",
     "default_icon": "icon_19.png",

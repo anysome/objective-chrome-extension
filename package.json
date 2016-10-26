@@ -1,19 +1,30 @@
 {
-  "name": "extension",
+  "name": "objective-chrome-extension",
   "version": "0.0.1",
-  "description": "A vue project.",
+  "description": "Build with vue2 and airloy",
   "private": false,
-  "keywords": [],
+  "keywords": [
+  ],
   "scripts": {
     "dev": "cooking watch -p",
     "dist": "cooking build -p",
     "deploy": "cooking build --no-color"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/airloy/objective-chrome-extension/objective-chrome-extension.git"
+  },
+  "homepage": "https://github.com/airloy/objective-chrome-extension/objective-chrome-extension#readme",
+  "bugs": {
+    "url": "https://github.com/airloy/objective-chrome-extension/objective-chrome-extension/issues"
+  },
+  "author": "Layman <anysome@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "airloy": "^0.9.6",
-    "airloy-web": "^0.9.6",
-    "dom-tree": "1.0.0"
+    "vue": "^2.0.1",
+    "babel-polyfill": "*"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "cooking-vue2": "*"
+  }
 }

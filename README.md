@@ -1,10 +1,10 @@
-# extension
-> A vue project.
+# objective-chrome-extension
+> Build with vue2 and airloy
 
 ## Development
 
 ```shell
-npm i cooking -g
+npm i cooking-cli -g
 npm run dev
 ```
 
