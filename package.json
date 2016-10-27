@@ -7,7 +7,6 @@
   "scripts": {
     "dev": "cooking watch -p",
     "dist": "cooking build -p",
-    "uglify": "./node_modules/uglify-js/bin/uglifyjs ./dist/app.js -o ./dist/app.min.js -m",
     "deploy": "cooking build --no-color"
   },
   "repository": {
@@ -27,7 +26,6 @@
     "vue-airloy": "^0.9.8"
   },
   "devDependencies": {
-    "cooking-vue2": "*",
-    "uglify-js": "git+https://github.com/mishoo/UglifyJS2.git#harmony"
+    "cooking-vue2": "*"
   }
 }

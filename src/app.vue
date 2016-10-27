@@ -1,5 +1,6 @@
 <template>
-  <todo-list></todo-list>
+  <todo-list v-if="signed"></todo-list>
+  <login v-else></login>
 </template>
 
 <style>
@@ -8,6 +9,7 @@
 
 <script type="text/babel">
   import TodoList from './pages/TodoList.vue';
+  import Login from './pages/Login.vue';
 
   export default {
     name: 'app',
@@ -19,7 +21,8 @@
     },
 
     components: {
-      TodoList
+      TodoList,
+      Login
     },
 
     async created() {

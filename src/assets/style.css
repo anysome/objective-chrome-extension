@@ -10,14 +10,15 @@ body {
   margin: 0 auto;
   overflow: auto;
   font-family: PingFangSC, 微软雅黑, "Microsoft yahei", "Hiragino Sans GB", "冬青黑体简体中文 w3", Arial, STXihei, 华文细黑, SimSun, 宋体, Heiti, 黑体, sans-serif;
-  line-height: 1.75;
+}
+.main {
   padding: 0 14px;
+  & ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: #efeff4;
+  }
 }
 :focus {
   outline: none;
-}
-::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-  color: #efeff4;
 }
 .title {
   font-size:18px;
@@ -91,3 +92,35 @@ hr {
   }
 }
 
+.modal {
+  opacity:0.9;
+  background:#404040;
+  width: 300px;
+  height: 485px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.input {
+  font-size:18px;
+  color: var(--color-important);
+  border-radius:5px;
+  width:252px;
+  height: 39px;
+}
+#account {
+  margin-top: 148px;
+}
+#pwd {
+  margin-top: 17px;
+}
+.button {
+  background:#fdc02f;
+  border-radius:5px;
+  width:252px;
+  height:39px;
+  margin-top: 36px;
+  text-align: center;
+  font-size:18px;
+  color: white;
+}

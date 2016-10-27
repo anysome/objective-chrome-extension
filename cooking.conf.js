@@ -12,10 +12,16 @@ cooking.set({
     port: 3000,
     publicPath: '/',
     proxy: {
+      '/': {
+        target: 'http://localhost:3000',
+        pathRewrite: {
+          '/': '/popup.html'
+        }
+      },
       '/**/*.json': {
         target: 'http://api.asfun.cn',
         host: 'api.asfun.cn',
-        secure: false
+        secure: true
       }
     }
   },

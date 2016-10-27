@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <main class="main">
     <input type="text" class="title" placeholder="添加待办，回车保存">
     <hr>
     <section id="list">
