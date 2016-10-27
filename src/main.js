@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import App from './app';
-import VueAirloy from 'vue-airloy';
-import AirloyWeb from 'airloy-web';
+import VueAirloy from 'vue-airloy/src';
+import AirloyWeb from 'airloy-web/src';
 import config from './config.json';
 
 VueAirloy.configure(config.airloy);

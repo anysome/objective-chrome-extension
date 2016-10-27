@@ -6,7 +6,7 @@ cooking.set({
     app: ['babel-polyfill', './src/main.js']
   },
   dist: './dist',
-  template: './index.tpl',
+  template: {'popup.html': './index.tpl'},
 
   devServer: {
     port: 3000,
@@ -22,21 +22,26 @@ cooking.set({
 
   // production
   clean: true,
-  hash: true,
+  hash: false,
   sourceMap: false,
   minimize: true,
-  chunk: true, // see https://cookingjs.github.io/zh-cn/configuration.html#chunk
+  chunk: false, // see https://cookingjs.github.io/zh-cn/configuration.html#chunk
   postcss: [
     // require('...')
   ],
   publicPath: '/dist/',
   assetsPath: 'static',
   urlLoaderLimit: 10000,
-  extractCSS: '[name].[contenthash:7].css',
+  extractCSS: 'popup.css',
   alias: {
     'src': path.join(__dirname, 'src')
   },
   extends: ['vue2', 'lint', 'saladcss']
+});
+
+cooking.add('loader.es6', {
+  test: /node_modules\/.*airloy.*\.js$/,
+  loaders: ['babel-loader']
 });
 
 module.exports = cooking.resolve();

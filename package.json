@@ -7,6 +7,7 @@
   "scripts": {
     "dev": "cooking watch -p",
     "dist": "cooking build -p",
+    "uglify": "./node_modules/uglify-js/bin/uglifyjs ./dist/app.js -o ./dist/app.min.js -m",
     "deploy": "cooking build --no-color"
   },
   "repository": {
@@ -20,12 +21,13 @@
   "author": "Layman <anysome@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "airloy-web": "^0.9.6",
+    "airloy-web": "^0.9.8",
     "babel-polyfill": "*",
     "vue": "^2.0.1",
-    "vue-airloy": "^0.9.7"
+    "vue-airloy": "^0.9.8"
   },
   "devDependencies": {
-    "cooking-vue2": "*"
+    "cooking-vue2": "*",
+    "uglify-js": "git+https://github.com/mishoo/UglifyJS2.git#harmony"
   }
 }
