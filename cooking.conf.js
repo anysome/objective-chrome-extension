@@ -11,13 +11,10 @@ cooking.set({
   devServer: {
     port: 3000,
     publicPath: '/',
+    historyApiFallback: {
+      index: '/popup.html'
+    },
     proxy: {
-      '/': {
-        target: 'http://localhost:3000',
-        pathRewrite: {
-          '/': '/popup.html'
-        }
-      },
       '/**/*.json': {
         target: 'http://api.asfun.cn',
         host: 'api.asfun.cn',

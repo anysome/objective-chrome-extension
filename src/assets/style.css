@@ -11,6 +11,9 @@ body {
   overflow: auto;
   font-family: PingFangSC, 微软雅黑, "Microsoft yahei", "Hiragino Sans GB", "冬青黑体简体中文 w3", Arial, STXihei, 华文细黑, SimSun, 宋体, Heiti, 黑体, sans-serif;
 }
+a {
+  text-decoration: none;
+}
 .main {
   padding: 0 14px;
   & ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
@@ -105,8 +108,9 @@ hr {
   font-size:18px;
   color: var(--color-important);
   border-radius:5px;
-  width:252px;
+  width:232px;
   height: 39px;
+  padding: 0 10px;
 }
 #account {
   margin-top: 148px;
@@ -114,8 +118,11 @@ hr {
 #pwd {
   margin-top: 17px;
 }
-.button {
+button {
   background:#fdc02f;
+  border: none;
+  cursor: pointer;
+  outline: none;
   border-radius:5px;
   width:252px;
   height:39px;
@@ -123,4 +130,25 @@ hr {
   text-align: center;
   font-size:18px;
   color: white;
+  transition: all 0.5s;
+  & span {
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+    &:after {
+      content: '»';
+      position: absolute;
+      /*opacity: 0;*/
+      top: 0;
+      right: -40px;
+      transition: 0.5s;
+    }
+  }
+  &:hover span {
+     padding-right: 25px;
+     &:after {
+       /*opacity: 1;*/
+       right: 0;
+   }
+  }
 }
