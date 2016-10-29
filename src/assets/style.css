@@ -42,6 +42,8 @@ hr {
 }
 #list {
   margin-top: 17px;
+  height: 365px;
+  overflow-y: auto;
 }
 .empty {
   display: flex;
@@ -117,7 +119,7 @@ hr {
 }
 .input {
   font-size:18px;
-  color: var(--color-important);
+  color: black;
   background: #EFEFF4;
   border-radius:5px;
   border: none;

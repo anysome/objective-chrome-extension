@@ -1,6 +1,6 @@
 <template>
-  <div class="modal light" @click="dismiss">
-    <div class="mark" @click="stopClick">
+  <div class="modal light" @click.self="dismiss">
+    <div class="mark">
       <p>{{agenda.title}}</p>
       <input type="text" id="log" placeholder="记录一下。。。">
       <hr>
@@ -22,11 +22,9 @@
       agenda: {}
     },
     methods: {
-      stopClick(e) {
-        e.cancelBubble = true;
-      },
       doit() {
-        console.log('do it');
+        this.agenda.status = '1';
+        this.dismiss();
       }
     }
   }

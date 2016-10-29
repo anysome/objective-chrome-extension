@@ -11,9 +11,7 @@
     "Headers": true,
     "fetch": true,
     "Request": true,
-    "RongIMLib": true,
-    "plupload": true,
-    "Qiniu": true
+    "Promise": true
   },
   "rules": {
 //    "arrow-parens": 0, // allow paren-less arrow functions

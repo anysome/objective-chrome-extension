@@ -4,7 +4,7 @@
     <input id="pwd" type="password" class="input" placeholder="登录密码">
     <button @click="login"><span>登录 / 注册 </span></button>
     <section id="footer">
-      <a href="#" class="left" @click="backward"><img :src="bottom.icons.left"></a>
+      <a href="#" class="left" @click="dismiss"><img :src="bottom.icons.left"></a>
     </section>
   </div>
 </template>
@@ -14,7 +14,7 @@
     name: 'login',
 
     props: {
-      backward: Function
+      dismiss: Function
     },
 
     data() {
@@ -28,7 +28,7 @@
     },
     methods: {
       login() {
-        console.log('to login')
+        this.dismiss();
       }
     }
   }

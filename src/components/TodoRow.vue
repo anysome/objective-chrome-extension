@@ -1,11 +1,23 @@
 <template>
-  <div class="todo">
-    <a href="#" @click="toDoit"><img :src="generateIcon()"></a>
-    <p @click="openEdit" :class="agenda.status === '1' ? 'done' : '' ">{{agenda.title}}</p>
-    <span class="detail" v-html="remark()"></span>
-    <done-mark :dismiss="dismiss" v-show="page == 1" :agenda="agenda"></done-mark>
-  </div>
+  <transition name="slide-fade">
+    <div class="todo">
+      <a href="#" @click="toDoit"><img :src="generateIcon()"></a>
+      <p @click="openEdit" :class="agenda.status === '1' ? 'done' : '' ">{{agenda.title}}</p>
+      <span class="detail" v-html="remark()"></span>
+      <done-mark :dismiss="dismiss" v-show="page == 1" :agenda="agenda"></done-mark>
+    </div>
+  </transition>
 </template>
+
+<style>
+  .slide-fade-enter-active {
+    transition: all .5s ease;
+  }
+  .slide-fade-enter {
+    padding-left: 150px;
+    opacity: 0;
+  }
+</style>
 
 <script type="text/babel">
   import DoneMark from '../pages/DoneMark.vue';
@@ -54,11 +66,28 @@
         if (this.agenda.status === '1') {
           return '';
         }
-        // TODO if it's today
-        if (this.agenda.reminder) {
-          return `<img src="${require('../assets/images/bell.png')}">`;
+        let diff = new Date().getTime() - this.agenda.today;
+        if (diff < -86400000 * 2) {
+          let d = new Date(this.agenda.today);
+          return (1 + d.getMonth()) + '-' + (d.getDate() > 9 ? d.getDate() : '0' + d.getDate());
+        } else if (diff < -86400000) {
+          return '后天';
+        } else if (diff < 0) {
+          return '明天';
+        } else if (diff < 86400000) {
+          if (this.agenda.reminder) {
+            return `<img src="${require('../assets/images/bell.png')}">`;
+          } else {
+            return '';
+          }
+        } else if (diff < 86400000 * 2) {
+          return '昨天';
+        } else if (diff < 86400000 * 3) {
+          return '前天';
+        } else {
+          let d = new Date(this.agenda.today);
+          return (1 + d.getMonth()) + '-' + (d.getDate() > 9 ? d.getDate() : '0' + d.getDate());
         }
-        return '昨天';
       }
     }
   }
