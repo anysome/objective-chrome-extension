@@ -4,7 +4,8 @@
       <a href="#" @click="toDoit"><img :src="generateIcon()"></a>
       <p @click="openEdit" :class="agenda.status === '1' ? 'done' : '' ">{{agenda.title}}</p>
       <span class="detail" v-html="remark()"></span>
-      <done-mark :dismiss="dismiss" v-show="page == 1" :agenda="agenda"></done-mark>
+      <done-mark :dismiss="dismiss" v-show="page === 1" :agenda="agenda"></done-mark>
+      <edit-todo :dismiss="dismiss" v-show="page === 2" :agenda="agenda"></edit-todo>
     </div>
   </transition>
 </template>
@@ -21,6 +22,7 @@
 
 <script type="text/babel">
   import DoneMark from '../pages/DoneMark.vue';
+  import EditTodo from '../pages/EditTodo.vue';
 
   export default {
     name: 'todo-row',
@@ -33,7 +35,8 @@
       };
     },
     components: {
-      DoneMark
+      DoneMark,
+      EditTodo
     },
     methods: {
       toDoit() {
@@ -41,7 +44,6 @@
       },
       openEdit() {
         this.page = 2;
-        console.log('to edit');
       },
       dismiss() {
         this.page = 0;
