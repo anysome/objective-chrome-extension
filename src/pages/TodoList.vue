@@ -15,6 +15,7 @@
       <a href="#" class="right"><img :src="bottom.icons.right"></a>
     </section>
     <login v-if="!this.signed" v-show="page === 1" :dismiss="dismiss"></login>
+    <settings v-if="this.signed" v-show="page === 2" :dismiss="dismiss"></settings>
   </main>
 </template>
 
@@ -63,13 +64,15 @@
   import Vue from 'vue';
   import TodoRow from '../components/TodoRow.vue';
   import Login from './Login.vue';
+  import Settings from './Settings.vue';
   import {timeout} from '../libs/util';
 
   export default {
     name: 'todo-list',
     components: {
       TodoRow,
-      Login
+      Login,
+      Settings
     },
     data() {
       return {
