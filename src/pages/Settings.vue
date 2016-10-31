@@ -57,6 +57,7 @@
     methods: {
       logout() {
         this.$airloy.auth.logout();
+        this.dismiss(2);
       }
     }
   }

@@ -66,7 +66,7 @@
         let result = await this.$airloy.net.httpPost(api.public.sign, user);
         if (result.success) {
           this.$airloy.auth.saveUser(result.info);
-          this.dismiss();
+          this.dismiss(1);
         } else {
           this.error = translate(result.message);
         }
