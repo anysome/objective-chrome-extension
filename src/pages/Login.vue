@@ -3,6 +3,7 @@
     <input id="account" type="email" class="input" placeholder="邮箱帐号" v-model.trim="account">
     <input id="pwd" type="password" class="input" placeholder="登录密码" v-model="password">
     <button @click="login"><span>登录 / 注册 </span></button>
+    <span class="tip" v-show="error">{{error}}</span>
     <section id="footer">
       <a href="#" class="left" @click="dismiss"><img :src="bottom.icons.left"></a>
     </section>
@@ -30,6 +31,7 @@
 
 <script type="text/babel">
   import api from '../api.json';
+  import {translate} from '../libs/util';
 
   export default {
     name: 'login',
@@ -42,6 +44,7 @@
       return {
         account: '',
         password: '',
+        error: '',
         bottom: {
           icons: {
             left: require('../assets/images/logout.png')
@@ -51,13 +54,12 @@
     },
     methods: {
       async login() {
-        // todo validate account and password
         if (this.account.length < 5) {
-          this._email.focus();
+          this.error = '帐号至少5位';
           return;
         }
         if (this.password.length < 6) {
-          this._password.focus();
+          this.error = '密码至少6位';
           return;
         }
         let user = this.$airloy.auth.formUser(this.account, this.password);
@@ -66,8 +68,7 @@
           this.$airloy.auth.saveUser(result.info);
           this.dismiss();
         } else {
-          console.log(result.message);
-          // TODO tips
+          this.error = translate(result.message);
         }
       }
     }

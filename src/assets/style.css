@@ -53,6 +53,15 @@ hr {
 .light {
   background: #EFEFF4;
 }
+.tip {
+  position: fixed;
+  top: 400px;
+  width: 300px;
+  left: 0;
+  font-size: 14px;
+  text-align: center;
+  color: #ff5533;
+}
 button {
   background:#fdc02f;
   border: none;

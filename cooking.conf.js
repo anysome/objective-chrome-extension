@@ -18,7 +18,8 @@ cooking.set({
       '/**/*.json': {
         target: 'http://api.asfun.cn',
         host: 'api.asfun.cn',
-        secure: true
+        secure: true,
+        changeOrigin: true
       }
     }
   },
