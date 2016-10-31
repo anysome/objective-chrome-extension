@@ -2,10 +2,10 @@
   <transition name="slide-fade">
     <div class="todo">
       <a href="#" @click="toDoit"><img :src="generateIcon()"></a>
-      <p @click="openEdit" :class="agenda.status === '1' ? 'done' : '' ">{{agenda.title}}</p>
+      <p @click="openEdit" :class="titleClass()">{{agenda.title}}</p>
       <span class="detail" v-html="remark()"></span>
-      <done-mark :dismiss="dismiss" v-if="agenda.status === '0'" v-show="page === 1" :agenda="agenda"></done-mark>
-      <edit-todo :dismiss="dismiss" v-if="agenda.status === '0'" v-show="page === 2" :agenda="agenda"></edit-todo>
+      <done-mark :dismiss="dismiss" v-if="!agenda.deleted && agenda.status === '0'" v-show="page === 1" :agenda="agenda"></done-mark>
+      <edit-todo :dismiss="dismiss" v-if="!agenda.deleted && agenda.status === '0'" v-show="page === 2" :agenda="agenda"></edit-todo>
     </div>
   </transition>
 </template>
@@ -28,6 +28,10 @@
       flex: 1;
       font-size:18px;
       color: var(--color-important);
+    }
+    & .remove {
+      text-decoration: line-through;
+      color: #ceced2;
     }
     & .done {
       color:#efeff4;
@@ -67,7 +71,7 @@
     },
     methods: {
       toDoit() {
-        this.agenda.status === '0' && (this.page = 1);
+        this.page = 1;
       },
       openEdit() {
         this.page = 2;
@@ -89,6 +93,16 @@
             default:
               return require('../assets/images/checkbox_important.png');
           }
+        }
+      },
+      titleClass() {
+        if (this.agenda.deleted) {
+          return 'remove';
+        }
+        if (this.agenda.status === '1') {
+          return 'done';
+        } else {
+          return '';
         }
       },
       remark() {

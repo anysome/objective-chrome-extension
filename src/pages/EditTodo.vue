@@ -4,6 +4,7 @@
       <input type="text" id="title" :placeholder="agenda.title" v-model.trim="title">
       <hr>
       <textarea rows="5" type="text" id="detail" :placeholder="agenda.detail||'备注信息...'" v-model="detail"></textarea>
+      <span class="tip" v-show="error">{{error}}</span>
       <section class="footer">
         <a href="#" @click="toCancel" class="cancle">{{deleting ? '取消' : '返回'}}</a>
         <a href="#" @click="toDelete" class="del">{{deleting ? '确认删除' : '删除'}}</a>
@@ -76,6 +77,9 @@
 </style>
 
 <script type="text/babel">
+  import api from '../api.json';
+  import {translate} from '../libs/util';
+
   export default {
     name: 'edit-todo',
     props: {
@@ -86,12 +90,14 @@
       return {
         title: '',
         detail: '',
-        deleting: false
+        deleting: false,
+        error: ''
       }
     },
     mounted() {
       this.title = this.agenda.title;
       this.detail = this.agenda.detail;
+      this.error = '';
     },
     methods: {
       toCancel() {
@@ -100,10 +106,21 @@
       toDelete() {
         this.deleting ? this.doDelete() : this.deleting = true;
       },
-      doDelete() {
-        console.log('remote delete');
+      async doDelete() {
+        if (this.$airloy.auth.logined()) {
+          let result = await this.$airloy.net.httpGet(api.agenda.remove, {id: this.agenda.id});
+          if (result.success) {
+            this.agenda.deleted = true;
+            this.dismiss();
+          } else {
+            this.error = translate(result.message);
+          }
+        } else {
+          this.agenda.deleted = true;
+          this.dismiss();
+        }
       },
-      save() {
+      async save() {
         this.dismiss();
       }
     }
