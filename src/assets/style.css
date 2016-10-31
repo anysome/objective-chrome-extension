@@ -1,7 +1,4 @@
-:root {
-  --color-primary: #fdc02f;
-  --color-important: #808080;
-}
+@import "var.css";
 html {
   width: 300px;
   height: 485px;
@@ -14,23 +11,6 @@ body {
 a {
   text-decoration: none;
 }
-.main {
-  padding: 0 14px;
-}
-:focus {
-  outline: none;
-}
-.title {
-  font-size:18px;
-  color: var(--color-important);
-  border: none;
-  width: 232px;
-  margin-top: 8px;
-  padding: 14px 20px;
-}
-#header ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-  color: #efeff4;
-}
 hr {
   height: 1px;
   margin-left: 10px;
@@ -40,10 +20,8 @@ hr {
   font-size: 0;
   border: 0;
 }
-#list {
-  margin-top: 17px;
-  height: 365px;
-  overflow-y: auto;
+:focus {
+  outline: none;
 }
 .empty {
   display: flex;
@@ -57,50 +35,8 @@ hr {
   text-align:center;
   }
 }
-.todo {
-  width: 100%;
-  height: 41px;
-  display: flex;
-  align-items: center;
-
-  & a {
-    width: 24px;
-    height: 100%;
-      display: flex;
-      align-items: center;
-  }
-  & p {
-    flex: 1;
-    font-size:18px;
-    color: var(--color-important);
-  }
-  & .done {
-    color:#efeff4;
-  }
-  & .detail {
-    font-size:12px;
-    color:#ceced2;
-    text-align:right;
-  }
-}
-#footer {
-  position: fixed;
-  top: 445px;
-  left: 14px;
-  width: 272px;
-
-  & .left {
-    padding: 10px 0;
-    float: left;
-  }
-  & .right {
-      padding: 10px 0;
-      position:absolute;
-      right: 0;
-  }
-}
 .modal {
-  opacity:0.9;
+  opacity: 0.95;
   position: absolute;
   left: 0;
   top: 0;
@@ -116,22 +52,6 @@ hr {
 }
 .light {
   background: #EFEFF4;
-}
-.input {
-  font-size:18px;
-  color: black;
-  background: #EFEFF4;
-  border-radius:5px;
-  border: none;
-  width:232px;
-  height: 39px;
-  padding: 0 10px;
-}
-#account {
-  margin-top: 148px;
-}
-#pwd {
-  margin-top: 17px;
 }
 button {
   background:#fdc02f;
@@ -165,54 +85,5 @@ button {
        /*opacity: 1;*/
        right: 0;
    }
-  }
-}
-.mark {
-  background:#404040;
-  top: 0;
-  width: 100%;
-  height:270px;
-  position: absolute;
-
-  & p {
-    font-size:18px;
-    color:#808080;
-    margin-top: 20px;
-    margin-left: 34px;
-  }
-  & input {
-    font-size:14px;
-    color: white;
-    margin-left: 34px;
-    background: transparent;
-    border: none;
-  }
-  & #log {
-    margin-top: 20px;
-    width: 232px;
-  }
-  & hr {
-    margin: 10px 20px;
-  }
-  & #amount {
-    margin-top: 20px;
-    margin-right: 24px;
-    & span {
-      float: right;
-      color: #808080;
-      font-size:12px;
-    }
-  }
-  & button {
-    margin: 0 24px;
-    position: inherit;
-    bottom: 24px;
-    background:#4cd964;
-    & span:after {
-     content: '!!';
-    }
-    &:hover span:after {
-      right: 10px;
-    }
   }
 }

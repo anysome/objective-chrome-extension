@@ -11,6 +11,33 @@
 </template>
 
 <style>
+  @import "../assets/var.css";
+  .todo {
+    width: 100%;
+    height: 41px;
+    display: flex;
+    align-items: center;
+
+    & a {
+      width: 24px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+    }
+    & p {
+      flex: 1;
+      font-size:18px;
+      color: var(--color-important);
+    }
+    & .done {
+      color:#efeff4;
+    }
+    & .detail {
+      font-size:12px;
+      color:#ceced2;
+      text-align:right;
+    }
+  }
   .slide-fade-enter-active {
     transition: all .5s ease;
   }

@@ -1,6 +1,6 @@
 <template>
-  <div class="modal dark">
-    <div class="mark" style="height: 485px;">
+  <div class="modal">
+    <div class="area" style="height: 485px;">
       <input type="text" id="title" :placeholder="agenda.title" v-model.trim="title">
       <hr>
       <textarea rows="5" type="text" id="detail" :placeholder="agenda.detail||'备注信息...'" v-model="detail"></textarea>
@@ -14,6 +14,24 @@
 </template>
 
 <style>
+  .area {
+    background: #404040;
+    top: 0;
+    width: 100%;
+    height: 270px;
+    position: absolute;
+
+    & input {
+      font-size:14px;
+      color: white;
+      margin-left: 34px;
+      background: transparent;
+      border: none;
+    }
+    & hr {
+      margin: 10px 20px;
+    }
+  }
   #title {
     font-size: 18px;
     margin-top: 16px;

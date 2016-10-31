@@ -5,7 +5,7 @@ cooking.set({
   entry: {
     app: ['babel-polyfill', './src/main.js']
   },
-  dist: './dist',
+  dist: './crx/page',
   template: {'popup.html': './index.tpl'},
 
   devServer: {
@@ -32,7 +32,7 @@ cooking.set({
   postcss: [
     // require('...')
   ],
-  publicPath: '/dist/',
+  publicPath: '/page/',
   assetsPath: 'static',
   urlLoaderLimit: 10000,
   extractCSS: 'popup.css',

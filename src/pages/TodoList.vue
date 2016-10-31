@@ -18,10 +18,52 @@
   </main>
 </template>
 
+<style>
+  .main {
+    padding: 0 14px;
+  }
+  #header { /* Chrome/Opera/Safari */
+    & ::-webkit-input-placeholder {
+       color: #efeff4;
+     }
+
+    & .title {
+        font-size:18px;
+        color: var(--color-important);
+        border: none;
+        width: 232px;
+        margin-top: 8px;
+        padding: 14px 20px;
+      }
+  }
+  #list {
+    margin-top: 17px;
+    height: 365px;
+    overflow-y: auto;
+  }
+  #footer {
+    position: fixed;
+    top: 445px;
+    left: 14px;
+    width: 272px;
+
+  & .left {
+      padding: 10px 0;
+      float: left;
+    }
+  & .right {
+      padding: 10px 0;
+      position:absolute;
+      right: 0;
+    }
+  }
+</style>
+
 <script type="text/babel">
   import Vue from 'vue';
   import TodoRow from '../components/TodoRow.vue';
   import Login from './Login.vue';
+  import {timeout} from '../libs/util';
 
   export default {
     name: 'todo-list',
@@ -75,9 +117,6 @@
       },
       dismiss() {
         this.page = 0;
-      },
-      timeout(ms) {
-        return new Promise(resolve => setTimeout(resolve, ms));
       }
     },
     async created() {
@@ -86,21 +125,21 @@
       if (this.signed) {
         this.bottom.icons.left = require('../assets/images/settings.png')
       } else {
-        await this.timeout(1000);
+        await timeout(1000);
         this.todos.push({title: '注册帐号', priority: 3, status: '0', today: new Date('2016-10-20')});
-        await this.timeout(1000);
+        await timeout(1000);
         this.todos.push({title: '登录行事易APP', priority: 2, status: '0', today: new Date().getTime() - 86400000 * 2, targetId: 2});
-        await this.timeout(1000);
+        await timeout(1000);
         this.todos.push({title: '使用APP管理添加目标', priority: 1, status: '0', today: new Date().getTime() - 86400000});
-        await this.timeout(1000);
+        await timeout(1000);
         this.todos.push({title: '安排目标某天的待办事项', priority: 0, status: '0', today: new Date().getTime() - 3600000});
-        await this.timeout(1000);
+        await timeout(1000);
         this.todos.push({title: '同步到chrome插件', priority: 1, status: '0', today: new Date().getTime(), reminder: new Date().getTime()});
-        await this.timeout(1000);
+        await timeout(1000);
         this.todos.push({title: '方便在电脑上查看待办', priority: 0, status: '0', today: new Date().getTime() + 86400000});
-        await this.timeout(1000);
+        await timeout(1000);
         this.todos.push({title: '完成待办', priority: 0, status: '0', today: new Date().getTime() + 86400000 * 2});
-        await this.timeout(1000);
+        await timeout(1000);
         this.todos.push({title: '同步回APP', priority: 3, status: '0', today: new Date().getTime() + 86400000 * 10});
       }
     }
