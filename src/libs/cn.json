@@ -1,5 +1,8 @@
 {
   "error": {
+    "request": {
+      "param": "输入数据有误"
+    },
     "account": {
       "wrong": "登录帐号不存在",
       "exist": "登录帐号已被使用",

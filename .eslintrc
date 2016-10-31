@@ -13,6 +13,9 @@
     "Request": true,
     "Promise": true
   },
+  "env": {
+    "es6": true
+  },
   "rules": {
 //    "arrow-parens": 0, // allow paren-less arrow functions
 //    "space-before-function-paren": 0,

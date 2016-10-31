@@ -2,15 +2,16 @@
   <div class="modal light" @click.self="dismiss">
     <div class="mark">
       <p>{{agenda.title}}</p>
-      <input type="text" id="log" placeholder="记录一下。。。">
+      <input type="text" id="log" placeholder="记录一下。。。" v-model="remark">
       <hr>
       <div id="amount" v-show="agenda.targetId">
-        <input type="number" placeholder="新增打卡数" min="1" step="1">
-        <span>番茄</span>
+        <input type="number" placeholder="新增打卡数" min="1" step="1" v-model="amount">
+        <span>{{agenda.unit|unitName}}</span>
       </div>
       <hr v-show="agenda.targetId">
       <button @click="doit"><span>完成</span></button>
     </div>
+    <span class="tip" v-show="error">{{error}}</span>
   </div>
 </template>
 
@@ -67,16 +68,50 @@
 </style>
 
 <script type="text/babel">
+  import api from '../api.json';
+  import {getUnitName, translate} from '../libs/util';
+
   export default {
     name: 'done-mark',
     props: {
       dismiss: Function,
       agenda: {}
     },
+    data() {
+      return {
+        remark: '',
+        amount: 1,
+        error: ''
+      }
+    },
+    filters: {
+      unitName(unit) {
+        if (typeof unit === 'undefined') {
+          return '';
+        } else {
+          return getUnitName(unit);
+        }
+      }
+    },
     methods: {
-      doit() {
-        this.agenda.status = '1';
-        this.dismiss();
+      async doit() {
+        if (this.$airloy.auth.logined()) {
+          let result = await this.$airloy.net.httpPost(api.agenda.finish, {
+            id: this.agenda.id,
+            amount: this.amount,
+            remark: this.remark
+          });
+          if (result.success) {
+            this.agenda.status = '1';
+            this.agenda.doneTime = new Date();
+            this.dismiss();
+          } else {
+            this.error = translate(result.message);
+          }
+        } else {
+          this.agenda.status = '1';
+          this.dismiss();
+        }
       }
     }
   }

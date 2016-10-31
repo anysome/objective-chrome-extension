@@ -26,4 +26,20 @@ function translate(message) {
   }
 }
 
-export {timeout, translate};
+const units = new Map();
+units.set('0', translate('objective.unit.check'));
+units.set('1', translate('objective.unit.tomato'));
+units.set('3', translate('objective.unit.piece'));
+units.set('4', translate('objective.unit.km'));
+units.set('5', translate('objective.unit.item'));
+units.set('2', translate('objective.unit.paper'));
+
+function getUnitName(unitValue) {
+  if (units.has(unitValue)) {
+    return units.get(unitValue);
+  } else {
+    return unitValue;
+  }
+}
+
+export {timeout, translate, getUnitName};

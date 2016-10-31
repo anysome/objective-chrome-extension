@@ -152,7 +152,7 @@
             this.todos = [];
             for (let todo of result.info) {
               this.todos.push(todo);
-              await timeout(500);
+              await timeout(100);
             }
           } else {
             this.error = translate(result.message);

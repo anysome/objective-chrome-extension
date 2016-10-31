@@ -4,8 +4,8 @@
       <a href="#" @click="toDoit"><img :src="generateIcon()"></a>
       <p @click="openEdit" :class="agenda.status === '1' ? 'done' : '' ">{{agenda.title}}</p>
       <span class="detail" v-html="remark()"></span>
-      <done-mark :dismiss="dismiss" v-show="page === 1" :agenda="agenda"></done-mark>
-      <edit-todo :dismiss="dismiss" v-show="page === 2" :agenda="agenda"></edit-todo>
+      <done-mark :dismiss="dismiss" v-if="agenda.status === '0'" v-show="page === 1" :agenda="agenda"></done-mark>
+      <edit-todo :dismiss="dismiss" v-if="agenda.status === '0'" v-show="page === 2" :agenda="agenda"></edit-todo>
     </div>
   </transition>
 </template>
