@@ -56,9 +56,14 @@
       width: 100%;
     }
     & p {
-      color: #efeff4;
+      color: #ceced2;
       font-size: 14px;
       flex: 1;
+    }
+    & span {
+      color: white;
+      padding: 0 5px;
+      font-size: 14px;
     }
   }
 </style>
