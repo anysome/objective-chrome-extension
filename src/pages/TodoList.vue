@@ -8,7 +8,7 @@
       <div class="empty" v-if="!todos.length">
         <p>使用APP管理更多事项</p>
       </div>
-      <todo-row v-for="todo in todos" :agenda="todo" v-if="!(hideDone() && todo.status === '1')"></todo-row>
+      <todo-row v-for="todo in todos" :agenda="todo" v-if="todoVisible(todo)"></todo-row>
     </section>
     <section id="footer">
       <a href="#" class="icon" @click="toPage"><img :src="bottom.icons.left"></a>
@@ -104,8 +104,13 @@
       }
     },
     methods: {
-      hideDone() {
-        return this.$airloy.store.getItem('hide_done') === '1';
+      todoVisible(todo) {
+        let hideDone = this.$airloy.store.getItem('hide_done');
+        if (hideDone === '1') {
+          return todo.status !== '1';
+        } else {
+          return true;
+        }
       },
       _addTodo(todo) {
         this.todos.push(todo);
@@ -212,13 +217,14 @@
       console.log('created');
       this.signed = await this.$airloy.auth.setup();
       this.$airloy.event.on(this.$airloy.event.authRequiredEvent, () => {
-        console.log('to login');
+        console.log('required to login again.');
         this.signed = false;
       });
       this.signed || this.reload();
       // cache list
-      window.addEventListener('unload', () => {
+      document.body.addEventListener('blur', () => {
         this.$airloy.store.setItem('todolist', JSON.stringify(this.todos));
+        console.debug('caching todo list ...');
       }, true);
     }
   }

@@ -163,7 +163,7 @@
       let interval = await this.$airloy.store.getItem('refresh_interval');
       interval && (this.interval = parseInt(interval, 0));
       let hideDone = await this.$airloy.store.getItem('hide_done');
-      this.showDone = !hideDone;
+      this.showDone = hideDone === '0';
     }
   }
 </script>

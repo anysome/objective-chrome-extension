@@ -1,5 +1,3 @@
-console.log("I will be back!");
-
 var myStroe = window.localStorage || window.sessionStorage;
 
 function setupRefreshTimer() {
@@ -18,7 +16,7 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse){
   if (message === 'updateInterval') {
     setupRefreshTimer();
   }
-  sendResponse('event[' + message +'] received.');
+  sendResponse('event[' + message + '] received.');
 });
 
 setupRefreshTimer();
