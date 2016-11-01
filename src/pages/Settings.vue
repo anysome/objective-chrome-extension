@@ -2,19 +2,28 @@
   <div class="modal light" @click.self="dismiss">
     <div id="settings">
       <div class="row">
-        <a href="#" @click="logout">登出</a>
+        <a class="action" href="#" @click="logout">登出</a>
       </div>
       <hr>
       <div class="row">
-
+        <p>打开网站</p>
+        <img :src="require('../assets/images/chevron.png')">
       </div>
       <hr>
       <div class="row">
-
+        <p>显示已完成</p>
+        <a href="#">
+          <img :src="require('../assets/images/checked.png')">
+        </a>
       </div>
       <hr>
       <div class="row">
-
+        <p>自动更新</p>
+        <div>
+          <a href="#"><img :src="require('../assets/images/skip_backward.png')"></a>
+          <span>15 分钟</span>
+          <a href="#"><img :src="require('../assets/images/skip_forward.png')"></a>
+        </div>
       </div>
     </div>
   </div>
@@ -33,17 +42,23 @@
     }
   }
   .row {
-    height: 59px;
+    height: 39px;
     display: flex;
+    padding: 10px 24px;
     flex-direction: row;
     align-items: center;
 
-    & a {
+    & .action {
       font-size: 18px;
       color:#fdc02f;
       display: inline-block;
       text-align: center;
       width: 100%;
+    }
+    & p {
+      color: #efeff4;
+      font-size: 14px;
+      flex: 1;
     }
   }
 </style>

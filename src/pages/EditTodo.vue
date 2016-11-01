@@ -122,7 +122,11 @@
       },
       async save() {
         if (this.$airloy.auth.logined()) {
-          let result = await this.$airloy.net.httpPost(api.agenda.update, this.agenda);
+          let result = await this.$airloy.net.httpPost(api.agenda.update, {
+            id: this.agenda.id,
+            title: this.title || this.agenda.title,
+            detail: this.detail
+          });
           if (result.success) {
             this.agenda.title = result.info.title;
             this.agenda.detail = result.info.detail;
