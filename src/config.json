@@ -3,7 +3,7 @@
     "server": "localhost:3000",
     "useHttps": false,
     "apiVersion": "v1",
-    "appKey": "Delight",
-    "appSecret": "test"
+    "appKey": "objective",
+    "appSecret": "websecret"
   }
 }

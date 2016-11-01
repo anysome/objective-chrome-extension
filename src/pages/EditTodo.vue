@@ -76,7 +76,7 @@
   }
 </style>
 
-<script type="text/babel">
+<script type="text/ecmascript-6">
   import api from '../api.json';
   import {translate} from '../libs/util';
 
@@ -108,7 +108,7 @@
       },
       async doDelete() {
         if (this.$airloy.auth.logined()) {
-          let result = await this.$airloy.net.httpGet(api.agenda.remove, {id: this.agenda.id});
+          let result = await this.$airloy.net.httpPost(api.agenda.remove, {id: this.agenda.id});
           if (result.success) {
             this.agenda.deleted = true;
             this.dismiss();
@@ -121,7 +121,20 @@
         }
       },
       async save() {
-        this.dismiss();
+        if (this.$airloy.auth.logined()) {
+          let result = await this.$airloy.net.httpPost(api.agenda.update, this.agenda);
+          if (result.success) {
+            this.agenda.title = result.info.title;
+            this.agenda.detail = result.info.detail;
+            this.dismiss();
+          } else {
+            this.error = translate(result.message);
+          }
+        } else {
+          this.title && (this.agenda.title = this.title);
+          this.agenda.detail = this.detail;
+          this.dismiss();
+        }
       }
     }
   }

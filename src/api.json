@@ -1,7 +1,6 @@
 {
   "public": {
-    "sign": "pub/sign.json",
-    "try": "pub/try.json"
+    "sign": "pub/sign.json"
   },
   "agenda": {
     "add": "agenda/add.json",
@@ -10,8 +9,7 @@
     "finish": "agenda/finish.json",
     "remind": "agenda/remind.json",
     "list": {
-      "focus": "agenda/list/focus.json",
-      "done": "agenda/list/done.json"
+      "focus": "agenda/list/todo.json"
     }
   }
 }
