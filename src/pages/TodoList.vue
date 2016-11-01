@@ -147,15 +147,25 @@
       },
       async reload() {
         if (this.signed) {
-          let result = await this.$airloy.net.httpGet(api.agenda.list.focus);
-          if (result.success) {
+          // read from cache first
+          let list = this.$airloy.store.getItem('todolist');
+          if (list) {
             this.todos = [];
-            for (let todo of result.info) {
+            for (let todo of JSON.parse(list)) {
               this.todos.push(todo);
               await timeout(100);
             }
           } else {
-            this.error = translate(result.message);
+            let result = await this.$airloy.net.httpGet(api.agenda.list.focus);
+            if (result.success) {
+              this.todos = [];
+              for (let todo of result.info) {
+                this.todos.push(todo);
+                await timeout(100);
+              }
+            } else {
+              this.error = translate(result.message);
+            }
           }
         } else {
           this.todos = [];
@@ -203,6 +213,10 @@
         this.signed = false;
       });
       this.signed || this.reload();
+      // cache list
+      window.addEventListener('unload', () => {
+        this.$airloy.store.setItem('todolist', JSON.stringify(this.todos));
+      }, true);
     }
   }
 </script>
