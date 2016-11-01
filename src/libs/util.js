@@ -42,4 +42,22 @@ function getUnitName(unitValue) {
   }
 }
 
-export {timeout, translate, getUnitName};
+function sendBackground(eventName) {
+  try {
+    chrome.runtime.sendMessage(eventName, function(response) {
+      console.log('%o', response);
+    });
+  } catch (e) {
+    console.warn('can\'t connect to background page');
+  }
+}
+
+function openWeb(url) {
+  try {
+    chrome.tabs.create({url: url});
+  } catch (e) {
+    window.open(url, '_blank');
+  }
+}
+
+export {timeout, translate, getUnitName, sendBackground, openWeb};

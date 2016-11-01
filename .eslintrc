@@ -14,7 +14,8 @@
     "Headers": true,
     "fetch": true,
     "Request": true,
-    "Promise": true
+    "Promise": true,
+    "chrome": true
   },
   "rules": {
 //    "arrow-parens": 0, // allow paren-less arrow functions

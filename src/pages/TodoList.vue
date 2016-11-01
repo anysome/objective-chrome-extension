@@ -8,7 +8,7 @@
       <div class="empty" v-if="!todos.length">
         <p>使用APP管理更多事项</p>
       </div>
-      <todo-row v-for="todo in todos" :agenda="todo"></todo-row>
+      <todo-row v-for="todo in todos" :agenda="todo" v-if="!(hideDone() && todo.status === '1')"></todo-row>
     </section>
     <section id="footer">
       <a href="#" class="icon" @click="toPage"><img :src="bottom.icons.left"></a>
@@ -104,6 +104,9 @@
       }
     },
     methods: {
+      hideDone() {
+        return this.$airloy.store.getItem('hide_done') === '1';
+      },
       _addTodo(todo) {
         this.todos.push(todo);
         this.todos.sort(function(a, b) {
