@@ -13,7 +13,7 @@
       <div class="row">
         <p>显示已完成</p>
         <a href="#" @click="toggleShowDone">
-          <img :src="checkIcon()">
+          <img :src="showDoneIcon">
         </a>
       </div>
       <hr>
@@ -79,7 +79,17 @@
     data() {
       return {
         showDone: true,
-        interval: 15
+        showDoneIcon: require('../assets/images/checked.png'),
+        interval: 30
+      }
+    },
+    watch: {
+      showDone: function(newVal) {
+        if (newVal) {
+          this.showDoneIcon = require('../assets/images/checked.png');
+        } else {
+          this.showDoneIcon = require('../assets/images/checkbox_none.png');
+        }
       }
     },
     methods: {
@@ -97,13 +107,6 @@
         } else {
           this.$airloy.store.setItem('hide_done', '0');
           this.showDone = true;
-        }
-      },
-      checkIcon() {
-        if (this.showDone) {
-          return require('../assets/images/checked.png');
-        } else {
-          return require('../assets/images/checkbox_none.png');
         }
       },
       setInterval(val) {
@@ -163,7 +166,7 @@
       let interval = await this.$airloy.store.getItem('refresh_interval');
       interval && (this.interval = parseInt(interval, 0));
       let hideDone = await this.$airloy.store.getItem('hide_done');
-      this.showDone = hideDone === '0';
+      this.showDone = hideDone !== '1';
     }
   }
 </script>

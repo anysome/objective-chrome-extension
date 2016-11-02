@@ -1,6 +1,6 @@
 {
   "name": "objective-chrome-extension",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Build with vue2 and airloy",
   "private": false,
   "keywords": [],

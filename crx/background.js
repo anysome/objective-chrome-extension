@@ -2,7 +2,7 @@ var myStroe = window.localStorage || window.sessionStorage;
 
 function setupRefreshTimer() {
   var refreshMins = myStroe.getItem('refresh_interval');
-  refreshMins = refreshMins ? parseInt(refreshMins) : 15;
+  refreshMins = refreshMins ? parseInt(refreshMins) : 30;
   chrome.alarms.create('removeTodolistCache', {delayInMinutes: refreshMins, periodInMinutes: refreshMins});
 }
 
