@@ -104,6 +104,7 @@
           if (result.success) {
             this.agenda.status = '1';
             this.agenda.doneTime = new Date();
+            this.$airloy.event.emit('todolist:changed');
             this.dismiss();
           } else {
             this.error = translate(result.message);

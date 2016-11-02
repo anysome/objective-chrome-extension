@@ -111,6 +111,7 @@
           let result = await this.$airloy.net.httpPost(api.agenda.remove, {id: this.agenda.id});
           if (result.success) {
             this.agenda.deleted = true;
+            this.$airloy.event.emit('todolist:changed');
             this.dismiss();
           } else {
             this.error = translate(result.message);
@@ -130,6 +131,7 @@
           if (result.success) {
             this.agenda.title = result.info.title;
             this.agenda.detail = result.info.detail;
+            this.$airloy.event.emit('todolist:changed');
             this.dismiss();
           } else {
             this.error = translate(result.message);

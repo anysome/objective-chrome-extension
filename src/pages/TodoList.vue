@@ -13,7 +13,7 @@
     <section id="footer">
       <a href="#" class="icon" @click="toPage"><img :src="bottom.icons.left"></a>
       <span>{{error}}</span>
-      <a href="#" class="icon" @click="reload"><img :src="bottom.icons.right"></a>
+      <a href="#" class="icon" @click="reload(true)"><img :src="bottom.icons.right"></a>
     </section>
     <login v-if="!this.signed" v-show="page === 1" :dismiss="dismiss"></login>
     <settings v-if="this.signed" v-show="page === 2" :dismiss="dismiss"></settings>
@@ -141,6 +141,7 @@
           });
           if (result.success) {
             this._addTodo(result.info);
+            this.$airloy.event.emit('todolist:changed');
           } else {
             this.error = translate(result.message);
           }
@@ -153,10 +154,10 @@
           });
         }
       },
-      async reload() {
+      async reload(forceFresh) {
         if (this.signed) {
           // read from cache first
-          let list = this.$airloy.store.getItem('todolist');
+          let list = forceFresh ? null : this.$airloy.store.getItem('todolist');
           if (list) {
             this.todos = [];
             for (let todo of JSON.parse(list)) {
@@ -171,6 +172,7 @@
                 this.todos.push(todo);
                 await timeout(100);
               }
+              this.$airloy.store.setItem('todolist', JSON.stringify(this.todos));
             } else {
               this.error = translate(result.message);
             }
@@ -220,12 +222,11 @@
         console.log('required to login again.');
         this.signed = false;
       });
-      this.signed || this.reload();
-      // cache list
-      document.body.addEventListener('blur', () => {
+      this.$airloy.event.on('todolist:changed', () => {
         this.$airloy.store.setItem('todolist', JSON.stringify(this.todos));
         console.debug('caching todo list ...');
-      }, true);
+      });
+      this.signed || this.reload();
     }
   }
 </script>
