@@ -4,6 +4,8 @@
   "manifest_version": 2,
   "description": "今日待办列表",
   "icons": {
+    "16": "icon_16.png",
+    "48": "icon_48.png",
     "128": "icon_128.png"
   },
   "background": {
