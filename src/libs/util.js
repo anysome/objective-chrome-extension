@@ -42,6 +42,14 @@ function getUnitName(unitValue) {
   }
 }
 
+function setBadge(number) {
+  try {
+    chrome.browserAction.setBadgeText({string: number});
+  } catch (e) {
+    console.log('only show badge in chrome');
+  }
+}
+
 function sendBackground(eventName) {
   try {
     chrome.runtime.sendMessage(eventName, function(response) {
@@ -60,4 +68,4 @@ function openWeb(url) {
   }
 }
 
-export {timeout, translate, getUnitName, sendBackground, openWeb};
+export {timeout, translate, getUnitName, setBadge, sendBackground, openWeb};

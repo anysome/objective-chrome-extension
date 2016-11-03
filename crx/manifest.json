@@ -16,7 +16,11 @@
   ],
   "browser_action": {
     "default_title": "",
-    "default_icon": "icon_19.png",
+    "default_icon": {
+      "16": "icon_16.png",
+      "24": "icon_24.png",
+      "32": "icon_32.png"
+    },
     "default_popup": "page/popup.html"
   }
 }
