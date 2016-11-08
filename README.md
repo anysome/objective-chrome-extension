@@ -10,6 +10,10 @@
 
 [sketch原型](https://pan.baidu.com/s/1qX9ScBM)
 
+# 更多说明
+
+[使用vue2开发chrome插件](http://www.jianshu.com/p/aac74f8288c3)
+
 # objective-chrome-extension
 > Build with vue2 and airloy
 
