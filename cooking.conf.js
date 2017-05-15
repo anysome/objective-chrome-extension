@@ -9,18 +9,18 @@ cooking.set({
   template: {'popup.html': './index.tpl'},
 
   devServer: {
-    port: 3000,
+    port: 3080,
     publicPath: '/',
     historyApiFallback: {
       index: '/popup.html'
     },
     proxy: {
-      '/**/*.json': {
-        target: 'http://api.asfun.cn',
-        host: 'api.asfun.cn',
-        secure: true,
-        changeOrigin: true
-      }
+      // '/**/*.json': {
+      //   target: 'https://api.asfun.cn',
+      //   host: 'api.asfun.cn',
+      //   secure: true,
+      //   changeOrigin: true
+      // }
     }
   },
 

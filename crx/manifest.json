@@ -13,7 +13,7 @@
     "scripts": ["background.js"]
   },
   "permissions": [
-    "http://api.asfun.cn/", "https://*.exease.com/",
+    "http://api.asfun.cn/", "https://api.exease.com/",
     "alarms", "tabs", "notifications"
   ],
   "browser_action": {

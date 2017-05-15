@@ -1,7 +1,7 @@
 {
   "airloy": {
-    "server": "localhost:3000",
-    "useHttps": false,
+    "server": "api.asfun.cn",
+    "useHttps": true,
     "apiVersion": "v1",
     "appKey": "objective",
     "appSecret": "websecret"
